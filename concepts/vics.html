@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vic's Barber Shop — Website Concept</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@600;700&family=Work+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap">
+<style>
+/* Concept: neighborhood shop with 20 years of history. Bone paper + navy ink + brick red; slab-serif signage type. Single committed light look. */
+:root{
+  --bone:#F5F1E8;--card:#FFFFFF;--navy:#1B2A41;--ink:#1E2226;--soft:#5E636B;--line:#E0DACD;--brick:#B23A2E;--ok:#2E7D4F;
+  --f-d:"Zilla Slab",Rockwell,Georgia,serif;--f-b:"Work Sans","Helvetica Neue",Arial,sans-serif;--f-m:"DM Mono",ui-monospace,Menlo,monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bone);color:var(--ink);font-family:var(--f-b);font-size:17px;line-height:1.6}
+a{color:var(--brick)}
+:focus-visible{outline:2px solid var(--brick);outline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:max(16px,4vw)}
+h1,h2,h3{font-family:var(--f-d);color:var(--navy);line-height:1.02;margin:0;text-wrap:balance}
+h2{font-size:clamp(2rem,5vw,3rem)}
+.lbl{font-family:var(--f-m);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--brick)}
+section{padding-block:clamp(56px,9vw,96px)}
+.concept{background:var(--navy);color:#DCE3EE;font-family:var(--f-m);font-size:.75rem;text-align:center;padding:8px 16px}
+.concept b{color:#fff;font-weight:500}
+.stripe{height:5px;background:repeating-linear-gradient(90deg,var(--brick) 0 24px,var(--bone) 24px 32px,var(--navy) 32px 56px,var(--bone) 56px 64px)}
+header{position:sticky;top:0;z-index:20;background:rgba(245,241,232,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.bar{display:flex;justify-content:space-between;align-items:center;height:68px;gap:12px}
+.logo{font-family:var(--f-d);font-weight:700;font-size:1.6rem;color:var(--navy);text-decoration:none;line-height:1}
+.logo small{display:block;font-family:var(--f-m);font-size:.6rem;letter-spacing:.2em;color:var(--brick);font-weight:400;margin-top:3px}
+nav{display:flex;gap:22px;align-items:center}
+nav a.l{color:var(--soft);text-decoration:none;font-size:.92rem}
+@media(max-width:720px){nav a.l{display:none}}
+.btn{display:inline-flex;align-items:center;gap:8px;font:600 .95rem var(--f-b);text-decoration:none;border:0;cursor:pointer;padding:13px 20px;border-radius:4px;background:var(--brick);color:#fff}
+.btn:hover{background:#9A2F24}
+.btn.out{background:transparent;color:var(--navy);box-shadow:inset 0 0 0 1.5px var(--navy)}
+
+.hero{display:grid;grid-template-columns:1.3fr 1fr;gap:48px;align-items:center;padding-block:clamp(48px,8vw,96px)}
+@media(max-width:860px){.hero{grid-template-columns:1fr}}
+.hero h1{font-size:clamp(2.8rem,8vw,5.4rem)}
+.hero h1 span{color:var(--brick)}
+.hero p{font-size:1.15rem;color:var(--soft);max-width:42ch;margin:20px 0 28px}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.status{display:inline-flex;align-items:center;gap:8px;font-family:var(--f-m);font-size:.8rem;margin-bottom:20px;color:var(--soft)}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--soft)}
+.status.open .dot{background:var(--ok);box-shadow:0 0 0 4px rgba(46,125,79,.18)}
+.status.closed .dot{background:var(--brick)}
+.badge{background:var(--navy);color:#fff;border-radius:6px;padding:28px;display:flex;flex-direction:column;gap:18px}
+.badge .big{font-family:var(--f-d);font-size:4rem;line-height:1;color:#fff}
+.badge .stars{color:#F2C14E;letter-spacing:3px;font-size:1.1rem}
+.badge p{margin:0;color:#C9D2DF;font-size:.95rem}
+.badge hr{border:0;border-top:1px solid rgba(255,255,255,.15);margin:0}
+.badge .row{display:flex;justify-content:space-between;font-family:var(--f-m);font-size:.8rem;color:#C9D2DF}
+.badge .row b{color:#fff;font-weight:500}
+
+.head{display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:16px;margin-bottom:32px}
+.head p{margin:0;color:var(--soft);max-width:40ch}
+.menu{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:8px 28px}
+.it{display:grid;grid-template-columns:1fr auto;gap:2px 16px;padding-block:18px;border-bottom:1px dotted var(--line)}
+.it:last-child{border-bottom:0}
+.it h3{font-size:1.45rem}
+.it .p{font-family:var(--f-m);font-size:1.1rem;color:var(--navy);font-variant-numeric:tabular-nums}
+.it p{grid-column:1/-1;margin:0;color:var(--soft);font-size:.92rem}
+.note{font-family:var(--f-m);font-size:.74rem;color:var(--soft);margin-top:12px}
+
+.visit{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+@media(max-width:760px){.visit{grid-template-columns:1fr}}
+table{width:100%;border-collapse:collapse}
+td{padding:12px 0;border-bottom:1px solid var(--line)}
+td:last-child{text-align:right;font-family:var(--f-m);color:var(--navy)}
+tr.today td{font-weight:600}
+tr.today td:first-child::after{content:" · today";font-family:var(--f-m);font-size:.72rem;color:var(--brick);font-weight:400}
+.addr{font-family:var(--f-d);font-size:2.2rem;color:var(--navy);line-height:1.05;margin:0 0 12px}
+.box{display:flex;justify-content:space-between;align-items:center;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:4px;padding:14px 16px;margin-top:12px}
+.box span{font-family:var(--f-m);font-size:1rem;color:var(--navy)}
+
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:860px){.reviews{grid-template-columns:1fr}}
+.slot{border:1.5px dashed var(--line);border-radius:6px;padding:24px;color:var(--soft);font-size:.92rem;min-height:140px;display:flex;flex-direction:column;gap:8px;background:rgba(255,255,255,.5)}
+.slot b{font-family:var(--f-m);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--brick);font-weight:500}
+
+.dark{background:var(--navy);color:#DCE3EE}
+.dark h2{color:#fff}
+.dark .cta{margin-top:24px}
+footer{padding-block:32px;font-size:.85rem;color:var(--soft);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+</style>
+</head>
+<body>
+<div class="concept"><b>Website concept</b> prepared for Vic's Barber Shop by Joris Gibson · Not a live site</div>
+<div class="stripe"></div>
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="#top">Vic's Barber Shop<small>PORTSMOUTH · OHIO</small></a>
+    <nav>
+      <a class="l" href="#services">Services</a>
+      <a class="l" href="#visit">Hours &amp; location</a>
+      <a class="btn" href="https://vics-barber-shop.square.site/s/appointments" target="_blank" rel="noopener">Book now</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap hero">
+    <div>
+      <div class="status" id="status"><span class="dot"></span><span id="st">Checking hours…</span></div>
+      <h1>Portsmouth's barber for <span>20 years.</span></h1>
+      <p>Good haircuts, fair prices and a chair that feels like home on 11th Street. Book online in under a minute or walk on in.</p>
+      <div class="cta">
+        <a class="btn" href="https://vics-barber-shop.square.site/s/appointments" target="_blank" rel="noopener">Book an appointment</a>
+        <a class="btn out" href="#visit">Hours &amp; directions</a>
+      </div>
+    </div>
+    <aside class="badge">
+      <div class="stars">★★★★★</div>
+      <div class="big">4.6</div>
+      <p>Average from 137 Google reviews. Customers keep coming back for the friendly atmosphere and reasonable prices.</p>
+      <hr>
+      <div class="row"><span>In business</span><b>20 years</b></div>
+      <div class="row"><span>Owner</span><b>Joseph Vicars</b></div>
+    </aside>
+  </div>
+
+  <section id="services" style="padding-top:0">
+    <div class="wrap">
+      <div class="head"><div><div class="lbl">Services</div><h2>Cuts &amp; prices</h2></div><p>Clear prices up front, so customers know what to expect before they sit down.</p></div>
+      <div class="menu">
+        <div class="it"><h3>Men's Haircut</h3><span class="p">$—</span><p>Clipper or scissor cut, neck shave and style.</p></div>
+        <div class="it"><h3>Fade / Taper</h3><span class="p">$—</span><p>Low, mid or high fade, blended clean.</p></div>
+        <div class="it"><h3>Kids Cut</h3><span class="p">$—</span><p>For the little ones, with patience.</p></div>
+        <div class="it"><h3>Senior Cut</h3><span class="p">$—</span><p>Classic cut at a discounted price.</p></div>
+        <div class="it"><h3>Beard Trim</h3><span class="p">$—</span><p>Shape, line-up and hot towel.</p></div>
+      </div>
+      <div class="note">Services and prices would be filled in from Vic's actual menu.</div>
+    </div>
+  </section>
+
+  <section id="visit" style="padding-top:0">
+    <div class="wrap visit">
+      <div><div class="lbl" style="margin-bottom:12px">Hours</div><table id="hours"></table></div>
+      <div>
+        <div class="lbl" style="margin-bottom:12px">Find us</div>
+        <p class="addr">2004 11th St<br>Portsmouth, OH 45662</p>
+        <div class="box"><span>(740) 352-1401</span><a class="btn out" style="padding:8px 14px" href="tel:+17403521401">Call</a></div>
+        <div class="box"><span>Get directions</span><a class="btn out" style="padding:8px 14px" href="https://www.google.com/maps/search/?api=1&query=2004+11th+St+Portsmouth+OH+45662" target="_blank" rel="noopener">Maps ↗</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="head"><div><div class="lbl">Reviews</div><h2>What customers say</h2></div><p>Your best Google reviews, pulled straight onto your homepage.</p></div>
+      <div class="reviews">
+        <div class="slot"><b>Google review</b>A real 5-star review from your Google profile goes here.</div>
+        <div class="slot"><b>Google review</b>A real 5-star review from your Google profile goes here.</div>
+        <div class="slot"><b>Google review</b>A real 5-star review from your Google profile goes here.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark">
+    <div class="wrap">
+      <h2>Ready for a fresh cut?</h2>
+      <p style="max-width:44ch">Book online any time, day or night. Your appointment goes straight into the shop's calendar.</p>
+      <div class="cta"><a class="btn" href="https://vics-barber-shop.square.site/s/appointments" target="_blank" rel="noopener">Book now</a></div>
+    </div>
+  </section>
+</main>
+<footer class="wrap"><span>Vic's Barber Shop · 2004 11th St, Portsmouth, OH</span><span>Concept by Joris Gibson</span></footer>
+
+<script>
+(function(){
+  const H=[null,[540,840],[540,1020],[540,1020],[540,1020],[540,1020],[540,840]];
+  const D=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+  const f=m=>{const h=Math.floor(m/60),mm=m%60;return(((h+11)%12)+1)+(mm?":"+String(mm).padStart(2,"0"):"")+(h>=12?"pm":"am")};
+  const n=new Date(),d=n.getDay(),m=n.getHours()*60+n.getMinutes(),h=H[d],s=document.getElementById("status");
+  if(h&&m>=h[0]&&m<h[1]){s.classList.add("open");st.textContent="Open now · until "+f(h[1])}
+  else{s.classList.add("closed");let k=1;while(!H[(d+k)%7])k++;const later=h&&m<h[0];st.textContent="Closed · opens "+(later?"today "+f(h[0]):(k===1?"tomorrow ":D[(d+k)%7]+" ")+f(H[(d+k)%7][0]))}
+  document.getElementById("hours").innerHTML=[1,2,3,4,5,6,0].map(i=>`<tr class="${i===d?"today":""}"><td>${D[i]}</td><td>${H[i]?f(H[i][0])+" – "+f(H[i][1]):"Closed"}</td></tr>`).join("");
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,437 @@
+<title>Fadework Barber Co.</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Fadework Barber Co. — fades, tapers, beard work and designs. Book online in under a minute.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Archivo:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap">
+<style>
+/* Layout: sticky signage bar → poster hero → price board → crew → booking console → hours/location → reviews. Dark-first, single committed look (shop at night under fluorescent light). */
+:root{
+  --asphalt:#0F1114;      /* page ground */
+  --slab:#181B20;         /* raised panels */
+  --seam:#2A2F37;         /* borders, rules */
+  --concrete:#CFCAC0;     /* body text */
+  --chalk:#F4F1EA;        /* headlines */
+  --muted:#8B8F96;        /* secondary text */
+  --cobalt:#4B74FF;       /* accent: buttons, links, focus */
+  --pole:#FF3D52;         /* used only in the barber-pole stripe + live dot */
+  --go:#3DDC97;           /* open-now status */
+  --f-display:"Big Shoulders Display","Impact","Arial Narrow",sans-serif;
+  --f-body:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --f-mono:"Space Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{background:var(--asphalt);color:var(--concrete);font-family:var(--f-body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--asphalt)}
+a{color:var(--cobalt)}
+:focus-visible{outline:2px solid var(--cobalt);outline-offset:3px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-display);color:var(--chalk);text-transform:uppercase;line-height:.92;margin:0;text-wrap:balance;letter-spacing:.01em}
+h2{font-size:clamp(2.6rem,7vw,4.5rem)}
+.eyebrow{font-family:var(--f-mono);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+section{padding-block:clamp(64px,10vw,112px)}
+.sec-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:16px;margin-bottom:40px}
+.sec-head p{max-width:42ch;margin:0;color:var(--muted)}
+
+/* barber pole stripe */
+.pole{height:6px;background:repeating-linear-gradient(-45deg,var(--pole) 0 10px,var(--chalk) 10px 20px,var(--cobalt) 20px 30px,var(--chalk) 30px 40px);background-size:56.57px 6px;animation:spin 2.4s linear infinite}
+@keyframes spin{to{background-position:56.57px 0}}
+
+/* header */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--asphalt) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--seam)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
+.logo{font-family:var(--f-display);font-weight:900;font-size:1.6rem;color:var(--chalk);text-decoration:none;letter-spacing:.02em;line-height:1}
+.logo span{color:var(--cobalt)}
+nav{display:flex;gap:28px;align-items:center}
+nav a.link{color:var(--concrete);text-decoration:none;font-size:.9rem;font-weight:500}
+nav a.link:hover{color:var(--chalk)}
+@media (max-width:760px){nav a.link{display:none}}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--f-body);font-weight:700;font-size:.95rem;text-decoration:none;border:0;cursor:pointer;border-radius:2px;padding:12px 20px;background:var(--cobalt);color:#fff;transition:transform .15s,background .15s}
+.btn:hover{background:#6489FF;transform:translateY(-1px)}
+.btn.ghost{background:transparent;color:var(--chalk);box-shadow:inset 0 0 0 1px var(--seam)}
+.btn.ghost:hover{box-shadow:inset 0 0 0 1px var(--concrete)}
+
+/* hero */
+.hero{padding-block:clamp(48px,8vw,96px) clamp(40px,6vw,72px);position:relative;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:48px;align-items:end}
+@media (max-width:860px){.hero-grid{grid-template-columns:1fr}}
+.hero h1{font-size:clamp(4rem,13vw,10rem);font-weight:900}
+.hero h1 em{font-style:normal;color:transparent;-webkit-text-stroke:2px var(--chalk)}
+.status{display:inline-flex;align-items:center;gap:10px;font-family:var(--f-mono);font-size:.8rem;padding:6px 12px;border:1px solid var(--seam);border-radius:99px;margin-bottom:28px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--muted)}
+.status.open .dot{background:var(--go);box-shadow:0 0 0 4px color-mix(in srgb,var(--go) 25%,transparent)}
+.status.closed .dot{background:var(--pole)}
+.hero-side p{font-size:1.1rem;margin:0 0 28px;max-width:38ch}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px}
+.stats{display:flex;gap:32px;margin-top:36px;padding-top:24px;border-top:1px solid var(--seam)}
+.stats div{display:flex;flex-direction:column}
+.stats b{font-family:var(--f-display);font-size:2.2rem;color:var(--chalk);line-height:1}
+.stats span{font-size:.8rem;color:var(--muted)}
+
+/* ticker */
+.ticker{border-block:1px solid var(--seam);overflow:hidden;background:var(--slab)}
+.ticker-track{display:flex;width:max-content;animation:tick 40s linear infinite}
+.ticker span{font-family:var(--f-display);font-size:1.4rem;text-transform:uppercase;color:var(--muted);padding:14px 24px;white-space:nowrap}
+.ticker span::after{content:"✂";margin-left:48px;color:var(--cobalt);font-size:1rem}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* price board */
+.board{display:grid;grid-template-columns:repeat(2,1fr);gap:0 56px}
+@media (max-width:760px){.board{grid-template-columns:1fr}}
+.cat{font-family:var(--f-mono);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--cobalt);padding-block:24px 8px;grid-column:1/-1}
+.item{display:grid;grid-template-columns:1fr auto;gap:4px 16px;padding-block:18px;border-bottom:1px solid var(--seam)}
+.item h3{font-size:1.7rem;font-weight:700}
+.item .price{font-family:var(--f-mono);font-weight:700;font-size:1.15rem;color:var(--chalk);font-variant-numeric:tabular-nums}
+.item p{margin:0;font-size:.9rem;color:var(--muted);grid-column:1/-1}
+.tag{font-family:var(--f-mono);font-size:.7rem;color:var(--concrete);border:1px solid var(--seam);padding:1px 7px;border-radius:2px;margin-left:8px;vertical-align:middle;white-space:nowrap}
+
+/* crew */
+.crew{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media (max-width:860px){.crew{grid-template-columns:1fr}}
+.barber{background:var(--slab);border:1px solid var(--seam);display:flex;flex-direction:column}
+.portrait{aspect-ratio:4/3;max-width:100%;position:relative;overflow:hidden;background:#1d2128;display:grid;place-items:center}
+.portrait canvas{width:100%;height:100%;display:block}
+.chair{position:absolute;top:12px;left:12px;font-family:var(--f-mono);font-size:.7rem;background:var(--asphalt);color:var(--chalk);padding:4px 8px}
+.barber-body{padding:20px;display:flex;flex-direction:column;gap:8px;flex:1}
+.barber h3{font-size:2rem}
+.barber .spec{font-size:.9rem;color:var(--muted);margin:0}
+.barber .ig{font-family:var(--f-mono);font-size:.8rem;color:var(--concrete);margin-top:auto;padding-top:12px;border-top:1px solid var(--seam)}
+
+/* gallery */
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+@media (max-width:760px){.gallery{grid-template-columns:repeat(2,1fr)}}
+.shot{aspect-ratio:1;max-width:100%;background:var(--slab);border:1px solid var(--seam);position:relative;overflow:hidden}
+.shot canvas{width:100%;height:100%;display:block}
+.shot figcaption{position:absolute;left:0;right:0;bottom:0;padding:10px 12px;font-family:var(--f-mono);font-size:.72rem;color:var(--chalk);background:linear-gradient(transparent,rgba(0,0,0,.75))}
+
+/* booking console */
+.book{background:var(--slab);border:1px solid var(--seam)}
+.book-grid{display:grid;grid-template-columns:1.5fr 1fr}
+@media (max-width:860px){.book-grid{grid-template-columns:1fr}}
+.steps{padding:28px;display:flex;flex-direction:column;gap:28px;min-width:0}
+.step-label{display:flex;gap:10px;align-items:baseline;margin-bottom:12px}
+.step-label b{font-family:var(--f-mono);font-size:.75rem;color:var(--cobalt)}
+.step-label span{font-family:var(--f-display);font-size:1.5rem;text-transform:uppercase;color:var(--chalk);line-height:1}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-family:var(--f-body);font-size:.9rem;color:var(--concrete);background:var(--asphalt);border:1px solid var(--seam);padding:10px 14px;border-radius:2px;cursor:pointer;transition:border-color .15s,color .15s;text-align:left}
+.chip:hover:not(:disabled){border-color:var(--concrete);color:var(--chalk)}
+.chip[aria-pressed="true"]{border-color:var(--cobalt);background:color-mix(in srgb,var(--cobalt) 18%,var(--asphalt));color:var(--chalk)}
+.chip:disabled{opacity:.3;cursor:not-allowed;text-decoration:line-through}
+.chip small{display:block;font-family:var(--f-mono);font-size:.72rem;color:var(--muted)}
+.days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}
+.days .chip{text-align:center;padding:10px 4px}
+.slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:6px}
+.slots .chip{text-align:center;font-family:var(--f-mono);font-size:.85rem}
+.empty-note{font-size:.9rem;color:var(--muted);margin:0}
+.ticket{background:var(--asphalt);border-left:1px solid var(--seam);padding:28px;display:flex;flex-direction:column;gap:16px}
+@media (max-width:860px){.ticket{border-left:0;border-top:1px solid var(--seam)}}
+.ticket h3{font-size:1.8rem}
+.ticket dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:10px 16px;font-size:.92rem}
+.ticket dt{font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);padding-top:3px}
+.ticket dd{margin:0;color:var(--chalk);text-align:right}
+.total{display:flex;justify-content:space-between;align-items:baseline;border-top:1px dashed var(--seam);padding-top:16px}
+.total b{font-family:var(--f-mono);font-size:1.6rem;color:var(--chalk);font-variant-numeric:tabular-nums}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-family:var(--f-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+.field input{font:inherit;color:var(--chalk);background:var(--slab);border:1px solid var(--seam);padding:11px 12px;border-radius:2px}
+.field input:focus{border-color:var(--cobalt);outline:none}
+.confirm{border:1px solid var(--go);padding:16px;color:var(--chalk);font-size:.95rem}
+.confirm b{color:var(--go)}
+.fine{font-size:.78rem;color:var(--muted);margin:0}
+
+/* visit */
+.visit{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+@media (max-width:760px){.visit{grid-template-columns:1fr;gap:40px}}
+.hours{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.hours td{padding:12px 0;border-bottom:1px solid var(--seam)}
+.hours td:last-child{text-align:right;font-family:var(--f-mono);color:var(--chalk)}
+.hours tr.today td{color:var(--chalk)}
+.hours tr.today td:first-child::after{content:"Today";font-family:var(--f-mono);font-size:.68rem;color:var(--cobalt);margin-left:10px;letter-spacing:.1em;text-transform:uppercase}
+.addr{font-family:var(--f-display);font-size:2.4rem;text-transform:uppercase;color:var(--chalk);line-height:1;margin:0 0 16px}
+.contact{display:flex;flex-direction:column;gap:12px;margin-top:24px}
+.contact-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 16px;background:var(--slab);border:1px solid var(--seam)}
+.contact-row span{font-family:var(--f-mono);color:var(--chalk);user-select:all;min-width:0;overflow-wrap:anywhere}
+.copy{font-family:var(--f-mono);font-size:.72rem;background:none;border:1px solid var(--seam);color:var(--concrete);padding:5px 10px;cursor:pointer;border-radius:2px;flex-shrink:0}
+.copy:hover{border-color:var(--concrete)}
+
+/* reviews */
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media (max-width:860px){.reviews{grid-template-columns:1fr}}
+blockquote{margin:0;padding:24px;border-top:3px solid var(--cobalt);background:var(--slab);display:flex;flex-direction:column;gap:16px}
+blockquote p{margin:0;color:var(--chalk);font-size:1.05rem}
+blockquote footer{font-family:var(--f-mono);font-size:.75rem;color:var(--muted);margin-top:auto}
+.stars{color:var(--cobalt);letter-spacing:2px}
+
+/* footer */
+.foot{border-top:1px solid var(--seam);padding-block:40px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px;font-size:.85rem;color:var(--muted)}
+.big-word{font-family:var(--f-display);font-weight:900;text-transform:uppercase;font-size:clamp(4rem,19vw,15rem);line-height:.8;color:var(--slab);-webkit-text-stroke:1px var(--seam);text-align:center;padding-top:40px;overflow:hidden;user-select:none}
+.demo-note{display:inline-flex;gap:8px;align-items:center}
+.demo-note b{color:var(--chalk);font-weight:500}
+</style>
+
+<div class="pole" aria-hidden="true"></div>
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="#top">FADEWORK<span>.</span></a>
+    <nav>
+      <a class="link" href="#menu">Menu</a>
+      <a class="link" href="#crew">Barbers</a>
+      <a class="link" href="#visit">Hours</a>
+      <a class="btn" href="#book">Book a chair</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="status" id="status"><span class="dot"></span><span id="status-text">Checking hours…</span></div>
+        <h1>Sharp<br>lines.<br><em>No wait.</em></h1>
+      </div>
+      <div class="hero-side">
+        <p>Skin fades, tapers, beard sculpting and freehand designs. Pick your barber and your time online, then walk in and sit down.</p>
+        <div class="hero-cta">
+          <a class="btn" href="#book">Book in 60 seconds</a>
+          <a class="btn ghost" href="#menu">See prices</a>
+        </div>
+        <div class="stats">
+          <div><b>4.9</b><span>212 reviews</span></div>
+          <div><b>3</b><span>chairs</span></div>
+          <div><b>$28</b><span>cuts from</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track" id="ticker"></div>
+  </div>
+
+  <section id="menu">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><div class="eyebrow">The board</div><h2>Cuts &amp; prices</h2></div>
+        <p>Every cut includes a hot-towel neck finish and a straight-razor lineup. Prices are flat. No upsell in the chair.</p>
+      </div>
+      <div class="board" id="board"></div>
+    </div>
+  </section>
+
+  <section id="crew" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><div class="eyebrow">Who's cutting</div><h2>The crew</h2></div>
+        <p>Three chairs, three specialties. Book the barber who fits the cut you want.</p>
+      </div>
+      <div class="crew" id="crew-list"></div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><div class="eyebrow">Recent work</div><h2>Off the chair</h2></div>
+        <p>Fresh cuts from this week. Tag us after your appointment to get featured.</p>
+      </div>
+      <div class="gallery" id="gallery"></div>
+    </div>
+  </section>
+
+  <section id="book" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><div class="eyebrow">Online booking</div><h2>Book a chair</h2></div>
+        <p>Pick a service, a barber and a time. You'll get a text reminder the day before.</p>
+      </div>
+      <form class="book" id="book-form" novalidate>
+        <div class="book-grid">
+          <div class="steps">
+            <div>
+              <div class="step-label"><b>1</b><span>Service</span></div>
+              <div class="chips" id="pick-service" role="group" aria-label="Service"></div>
+            </div>
+            <div>
+              <div class="step-label"><b>2</b><span>Barber</span></div>
+              <div class="chips" id="pick-barber" role="group" aria-label="Barber"></div>
+            </div>
+            <div>
+              <div class="step-label"><b>3</b><span>Day</span></div>
+              <div class="days" id="pick-day" role="group" aria-label="Day"></div>
+            </div>
+            <div>
+              <div class="step-label"><b>4</b><span>Time</span></div>
+              <div class="slots" id="pick-time" role="group" aria-label="Time"></div>
+            </div>
+          </div>
+          <aside class="ticket">
+            <div class="eyebrow">Your appointment</div>
+            <h3 id="t-title">Taper Fade</h3>
+            <dl>
+              <dt>Barber</dt><dd id="t-barber">—</dd>
+              <dt>When</dt><dd id="t-when">Pick a time</dd>
+              <dt>Length</dt><dd id="t-len">—</dd>
+            </dl>
+            <div class="total"><span class="eyebrow">Due at shop</span><b id="t-price">$0</b></div>
+            <div class="field"><label for="b-name">Name</label><input id="b-name" autocomplete="name" placeholder="First and last"></div>
+            <div class="field"><label for="b-phone">Mobile number</label><input id="b-phone" type="tel" autocomplete="tel" placeholder="(740) 555-0100"></div>
+            <button class="btn" type="submit" id="b-submit">Confirm booking</button>
+            <div class="confirm" id="confirm" hidden></div>
+            <p class="fine">Running late? Call ahead and we'll hold your chair for 10 minutes. Cancel free up to 2 hours before.</p>
+          </aside>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <section id="visit" style="padding-top:0">
+    <div class="wrap visit">
+      <div>
+        <div class="eyebrow" style="margin-bottom:16px">Hours</div>
+        <table class="hours" id="hours"></table>
+      </div>
+      <div>
+        <div class="eyebrow" style="margin-bottom:16px">Find us</div>
+        <p class="addr">214 Chillicothe St<br>Portsmouth, OH</p>
+        <p style="margin:0;max-width:40ch">Street parking out front, free lot behind the building after 5pm. Walk-ins welcome when a chair is open.</p>
+        <div class="contact">
+          <div class="contact-row"><span id="phone-text">(740) 555-0148</span><button class="copy" type="button" data-copy="phone-text">Copy</button></div>
+          <div class="contact-row"><span>@fadeworkbarber</span><a class="copy" href="https://www.google.com/maps/search/?api=1&query=Portsmouth+Ohio" target="_blank" rel="noopener" style="text-decoration:none">Directions ↗</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><div class="eyebrow">From the chair</div><h2>What people say</h2></div>
+      </div>
+      <div class="reviews">
+        <blockquote><span class="stars">★★★★★</span><p>Booked at 8am, sat down at 11 on the dot. Cleanest burst fade I've had in this town.</p><footer>Marcus T. · Google</footer></blockquote>
+        <blockquote><span class="stars">★★★★★</span><p>Dre did a freehand design for my son's birthday. He hasn't stopped looking in the mirror.</p><footer>Alicia R. · Google</footer></blockquote>
+        <blockquote><span class="stars">★★★★★</span><p>Finally a shop where I can see prices and times before I show up. Beard came out perfect.</p><footer>Jordan K. · Facebook</footer></blockquote>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <div class="big-word" aria-hidden="true">Fadework</div>
+  <div class="foot">
+    <span>© 2026 Fadework Barber Co. · Portsmouth, Ohio</span>
+    <span class="demo-note">Demo site · Designed &amp; built by <b>Joris Gibson</b></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const SERVICES=[
+    {id:"taper",cat:"Cuts",name:"Taper Fade",price:30,min:45,desc:"Clean taper at the temples and neckline. Scissor or clipper top.",tag:"Most booked"},
+    {id:"skin",cat:"Cuts",name:"Skin Fade",price:35,min:45,desc:"Bald to a #2 or #3 blend, foil-shaved at the bottom."},
+    {id:"burst",cat:"Cuts",name:"Burst Fade",price:35,min:50,desc:"Fade curved around the ear. Works with mohawks and curls."},
+    {id:"classic",cat:"Cuts",name:"Classic Cut",price:28,min:30,desc:"Scissor-over-comb, one length on the sides, tidy outline."},
+    {id:"kids",cat:"Cuts",name:"Kids Cut (12 & under)",price:22,min:30,desc:"Any style, any guard. Patience included."},
+    {id:"beard",cat:"Beard & extras",name:"Beard Sculpt",price:20,min:25,desc:"Shape, line, hot towel and razor edges."},
+    {id:"combo",cat:"Beard & extras",name:"Cut + Beard",price:48,min:70,desc:"Any fade or cut plus a full beard sculpt.",tag:"Save $7"},
+    {id:"design",cat:"Beard & extras",name:"Freehand Design",price:15,min:20,desc:"Lines, parts or custom art, cut freehand. Add to any cut."}
+  ];
+  const BARBERS=[
+    {id:"dre",name:"Dre",chair:"Chair 01",spec:"Skin fades and freehand designs. Twelve years behind the chair.",ig:"@dre.cuts",hue:226},
+    {id:"mal",name:"Malik",chair:"Chair 02",spec:"Tapers, waves and curly-hair texture work.",ig:"@malik.blends",hue:352},
+    {id:"tess",name:"Tess",chair:"Chair 03",spec:"Beard sculpting and classic scissor cuts.",ig:"@tess.shears",hue:156}
+  ];
+  // Day index 0=Sun. [open,close] in minutes, null=closed
+  const HOURS=[null,null,[600,1140],[600,1140],[600,1200],[600,1200],[540,1020]];
+  const DAYN=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+  const fmt=m=>{const h=Math.floor(m/60),mm=m%60,ap=h>=12?"pm":"am",h12=((h+11)%12)+1;return h12+(mm?":"+String(mm).padStart(2,"0"):"")+ap};
+  const $=id=>document.getElementById(id);
+
+  // status + hours
+  const now=new Date(),dow=now.getDay(),mins=now.getHours()*60+now.getMinutes(),h=HOURS[dow];
+  const st=$("status");
+  if(h&&mins>=h[0]&&mins<h[1]){st.classList.add("open");$("status-text").textContent="Open now · until "+fmt(h[1])}
+  else{st.classList.add("closed");let n=1;while(!HOURS[(dow+n)%7])n++;const nh=HOURS[(dow+n)%7];
+    const todayLater=h&&mins<h[0];$("status-text").textContent="Closed · opens "+(todayLater?"today "+fmt(h[0]):(n===1?"tomorrow ":DAYN[(dow+n)%7]+" ")+fmt(nh[0]))}
+  const order=[2,3,4,5,6,0,1];
+  $("hours").innerHTML=order.map(d=>`<tr class="${d===dow?"today":""}"><td>${DAYN[d]}</td><td>${HOURS[d]?fmt(HOURS[d][0])+" – "+fmt(HOURS[d][1]):"Closed"}</td></tr>`).join("");
+
+  // ticker
+  const words=["Skin fades","Burst fades","Tapers","Beard sculpts","Freehand designs","Hot towel finish","Kids cuts","Razor lineups"];
+  $("ticker").innerHTML=words.concat(words).map(w=>`<span>${w}</span>`).join("");
+
+  // board
+  let cat="",html="";
+  SERVICES.forEach(s=>{if(s.cat!==cat){cat=s.cat;html+=`<div class="cat">${cat}</div>`}
+    html+=`<div class="item"><h3>${s.name}${s.tag?`<span class="tag">${s.tag}</span>`:""}</h3><span class="price">$${s.price}</span><p>${s.desc} · ${s.min} min</p></div>`});
+  $("board").innerHTML=html;
+
+  // drawn art (stand-in for real photos)
+  function drawHead(c,hue,seed,style){
+    const r=c.getBoundingClientRect(),dpr=window.devicePixelRatio||1,w=Math.max(r.width,10),hh=Math.max(r.height,10);
+    c.width=w*dpr;c.height=hh*dpr;const x=c.getContext("2d");x.scale(dpr,dpr);
+    const g=x.createLinearGradient(0,0,w,hh);g.addColorStop(0,`hsl(${hue} 45% 22%)`);g.addColorStop(1,"#14171c");x.fillStyle=g;x.fillRect(0,0,w,hh);
+    // backdrop stripes
+    x.globalAlpha=.07;x.fillStyle="#fff";for(let i=-hh;i<w;i+=22){x.beginPath();x.moveTo(i,0);x.lineTo(i+8,0);x.lineTo(i+8+hh,hh);x.lineTo(i+hh,hh);x.fill()}x.globalAlpha=1;
+    const cx=w/2,cy=hh*.56,s=Math.min(w,hh)*.3;
+    // shoulders
+    x.fillStyle="#0b0d10";x.beginPath();x.ellipse(cx,hh+s*.2,s*1.5,s*.95,0,Math.PI,0);x.fill();
+    // neck + head
+    x.fillStyle=`hsl(${25+seed*6} 35% ${28+seed*4}%)`;x.fillRect(cx-s*.28,cy+s*.5,s*.56,s*.6);
+    x.beginPath();x.ellipse(cx,cy,s*.72,s*.88,0,0,Math.PI*2);x.fill();
+    // hair: faded sides via vertical gradient
+    const top=cy-s*.88,fadeEnd=cy+(style===1?.05:.3)*s;
+    const hg=x.createLinearGradient(0,top,0,fadeEnd);hg.addColorStop(0,"#0a0a0a");hg.addColorStop(.45,"#111");hg.addColorStop(1,"rgba(10,10,10,0)");
+    x.save();x.beginPath();x.ellipse(cx,cy,s*.74,s*.9,0,0,Math.PI*2);x.clip();x.fillStyle=hg;x.fillRect(cx-s,top-s*.3,s*2,fadeEnd-top+s*.3);x.restore();
+    // top volume
+    x.fillStyle="#0a0a0a";x.beginPath();x.ellipse(cx,top+s*.12,s*.62,s*(style===2?.42:.26),0,Math.PI,0);x.fill();
+    // beard
+    if(style===2||seed%2){x.fillStyle="rgba(8,8,8,.92)";x.beginPath();x.ellipse(cx,cy+s*.42,s*.6,s*.5,0,0,Math.PI);x.fill()}
+    // design line
+    if(style===3){x.strokeStyle=`hsl(${hue} 90% 70%)`;x.lineWidth=2;x.beginPath();x.moveTo(cx-s*.68,cy-s*.2);x.lineTo(cx-s*.4,cy-s*.45);x.lineTo(cx-s*.15,cy-s*.3);x.stroke()}
+  }
+  $("crew-list").innerHTML=BARBERS.map(b=>`<article class="barber"><div class="portrait"><canvas data-hue="${b.hue}" data-seed="${b.id.length}" data-style="${b.id==="tess"?2:b.id==="dre"?3:1}" aria-hidden="true"></canvas><span class="chair">${b.chair}</span></div><div class="barber-body"><h3>${b.name}</h3><p class="spec">${b.spec}</p><div class="ig">${b.ig}</div></div></article>`).join("");
+  const SHOTS=[["Skin fade · #0 to #2",226,1,1],["Burst fade + design",352,2,3],["Beard sculpt",156,3,2],["Taper · scissor top",40,4,1],["Low taper",200,1,1],["Line design",280,2,3],["Classic cut",30,3,0],["Fade + beard",0,4,2]];
+  $("gallery").innerHTML=SHOTS.map(s=>`<figure class="shot" style="margin:0"><canvas data-hue="${s[1]}" data-seed="${s[2]}" data-style="${s[3]}" aria-hidden="true"></canvas><figcaption>${s[0]}</figcaption></figure>`).join("");
+  const paint=()=>document.querySelectorAll("canvas[data-hue]").forEach(c=>drawHead(c,+c.dataset.hue,+c.dataset.seed,+c.dataset.style));
+  paint();let rt;window.addEventListener("resize",()=>{clearTimeout(rt);rt=setTimeout(paint,150)});
+
+  // booking
+  const state={service:"taper",barber:"dre",day:null,time:null};
+  const days=[];for(let i=0;i<14&&days.length<7;i++){const d=new Date();d.setHours(0,0,0,0);d.setDate(d.getDate()+i);if(HOURS[d.getDay()])days.push(d)}
+  state.day=0;
+  function seeded(n){let t=n+0x6D2B79F5;t=Math.imul(t^t>>>15,t|1);t^=t+Math.imul(t^t>>>7,t|61);return((t^t>>>14)>>>0)/4294967296}
+  function chip(group,val,label,sub,pressed,disabled){return `<button type="button" class="chip" data-g="${group}" data-v="${val}" aria-pressed="${pressed}" ${disabled?"disabled":""}>${label}${sub?`<small>${sub}</small>`:""}</button>`}
+  function render(){
+    $("pick-service").innerHTML=SERVICES.map(s=>chip("service",s.id,s.name,"$"+s.price,state.service===s.id)).join("");
+    $("pick-barber").innerHTML=BARBERS.map(b=>chip("barber",b.id,b.name,b.chair,state.barber===b.id)).join("");
+    $("pick-day").innerHTML=days.map((d,i)=>chip("day",i,d.toLocaleDateString("en-US",{weekday:"short"}),d.getDate(),state.day===i)).join("");
+    const d=days[state.day],h=HOURS[d.getDay()],svc=SERVICES.find(s=>s.id===state.service);
+    const slots=[];const isToday=d.toDateString()===new Date().toDateString();const nowM=new Date().getHours()*60+new Date().getMinutes();
+    for(let m=h[0];m+svc.min<=h[1];m+=30){const key=d.getDate()*1000+m+state.barber.length*77;const taken=seeded(key)<.38;const past=isToday&&m<=nowM+15;slots.push({m,off:taken||past})}
+    const open=slots.filter(s=>!s.off).length;
+    if(state.time!==null&&!slots.find(s=>s.m===state.time&&!s.off))state.time=null;
+    $("pick-time").innerHTML=open?slots.map(s=>chip("time",s.m,fmt(s.m),"",state.time===s.m,s.off)).join(""):`<p class="empty-note">No open times left this day. Pick another day.</p>`;
+    const b=BARBERS.find(x=>x.id===state.barber);
+    $("t-title").textContent=svc.name;$("t-barber").textContent=b.name+" · "+b.chair;$("t-len").textContent=svc.min+" min";$("t-price").textContent="$"+svc.price;
+    $("t-when").textContent=state.time===null?"Pick a time":d.toLocaleDateString("en-US",{weekday:"short",month:"short",day:"numeric"})+" · "+fmt(state.time);
+  }
+  document.querySelector(".steps").addEventListener("click",e=>{const c=e.target.closest(".chip");if(!c||c.disabled)return;const g=c.dataset.g,v=c.dataset.v;
+    state[g]=(g==="day"||g==="time")?+v:v;if(g!=="time")state.time=state.time;$("confirm").hidden=true;render()});
+  render();
+  $("book-form").addEventListener("submit",e=>{e.preventDefault();const cf=$("confirm"),name=$("b-name").value.trim(),ph=$("b-phone").value.replace(/\D/g,"");
+    cf.hidden=false;cf.style.borderColor="";
+    if(state.time===null){cf.style.borderColor="var(--pole)";cf.innerHTML="Pick a time in step 4 to finish booking.";return}
+    if(!name||ph.length<10){cf.style.borderColor="var(--pole)";cf.innerHTML="Add your name and a 10-digit mobile number so we can text your reminder.";return}
+    cf.innerHTML=`<b>Booked.</b> See you ${$("t-when").textContent}, ${name.split(" ")[0]}. A reminder text goes to the number ending in ${ph.slice(-4)} the day before.<br><span class="fine">Demo only: no real booking was made.</span>`});
+
+  // copy buttons
+  document.querySelectorAll("[data-copy]").forEach(btn=>btn.addEventListener("click",()=>{const el=$(btn.dataset.copy),t=el.textContent;
+    const done=()=>{btn.textContent="Copied";setTimeout(()=>btn.textContent="Copy",1500)};
+    const sel=()=>{const r=document.createRange();r.selectNodeContents(el);const s=getSelection();s.removeAllRanges();s.addRange(r)};
+    try{navigator.clipboard.writeText(t).then(done,sel)}catch(_){sel()}}));
+})();
+</script>
